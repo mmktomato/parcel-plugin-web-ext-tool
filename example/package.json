@@ -1,0 +1,17 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "An example of parcel-plugin-web-ext-tool.",
+  "main": "index.js",
+  "scripts": {
+    "start": "parcel watch src/content.js --public-url=/dist"
+  },
+  "keywords": [],
+  "author": "mmktomato",
+  "license": "MIT",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.4",
+    "parcel-plugin-web-ext-tool": "file:..",
+    "web-ext": "^4.0.0"
+  }
+}

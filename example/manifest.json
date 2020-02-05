@@ -1,0 +1,10 @@
+{
+  "manifest_version": 2,
+  "version": "0.0.1",
+  "name": "parcel-plugin-web-ext-tool-example",
+  "description": "",
+  "content_scripts": [{
+    "matches": ["<all_urls>"],
+    "js": ["dist/content.js"]
+  }]
+}
