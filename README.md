@@ -13,5 +13,11 @@ $ npm install --save-dev parcel-bundler web-ext parcel-plugin-web-ext-tool
 # Usage
 Run `parcel watch` or `parcel serve` in any way you like.
 
-# TODO
-* web-ext's config files. -> https://github.com/mmktomato/parcel-plugin-web-ext-tool/issues/1
+## Config
+You can specify web-ext's settings via config files. The plugin reads config files in the following order. The same option is overwritten by the latter one.
+
+* ~/.web-ext-config.js
+* package.json
+* web-ext-config.js
+
+See [web-ext's official doc](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/#automatic-discovery-of-configuration-files) for details.
