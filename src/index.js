@@ -1,5 +1,5 @@
 const webExt = require("web-ext").default;
-const process = require("process");
+const { getConfig } = require("./config");
 
 let runner = null;
 
@@ -14,10 +14,9 @@ module.exports = bundler => {
       return;
     }
 
-    runner = await webExt.cmd.run({
-      noReload: true,
-      sourceDir: process.cwd(),
-    }, {
+    const config = await getConfig();
+
+    runner = await webExt.cmd.run(config, {
       shouldExitProgram: true,
     });
 
