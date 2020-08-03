@@ -12,6 +12,6 @@
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
     "parcel-plugin-web-ext-tool": "file:..",
-    "web-ext": "^4.0.0"
+    "web-ext": "^5.0.0"
   }
 }

@@ -24,10 +24,10 @@
   },
   "peerDependencies": {
     "parcel-bundler": ">=1.x",
-    "web-ext": ">=4.x"
+    "web-ext": ">=5.x"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
-    "web-ext": "^4.0.0"
+    "web-ext": "^5.0.0"
   }
 }
