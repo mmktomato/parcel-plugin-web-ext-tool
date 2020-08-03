@@ -1,4 +1,4 @@
-const webExt = require("web-ext").default;
+const webExt = require("web-ext");
 const { getConfig } = require("./config");
 
 let runner = null;
