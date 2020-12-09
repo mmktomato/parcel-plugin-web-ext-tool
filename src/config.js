@@ -15,7 +15,7 @@ const getCwdConfig = () => {
     return null;
   }
 
-  return (obj && obj.run) ? obj.run : null;
+  return obj || null;
 };
 
 const getPackageJsonConfig = async () => {
@@ -29,7 +29,7 @@ const getPackageJsonConfig = async () => {
     return null;
   }
 
-  return (obj && obj.webExt && obj.webExt.run) ? obj.webExt.run : null;
+  return (obj && obj.webExt) ? obj.webExt : null;
 };
 
 const getUserHomeConfig = () => {
@@ -42,13 +42,37 @@ const getUserHomeConfig = () => {
     return null;
   }
 
-  return (obj && obj.run) ? obj.run : null;
+  return obj || null;
+};
+
+const flatten = (config) => {
+  // Merge global options and "run" options.
+  // See "Global options" sections in https://extensionworkshop.com/documentation/develop/web-ext-command-reference/
+
+  if (!config || Object.keys(config).length < 1) {
+    return {};
+  }
+
+  // Intentionally omitted "help" and "version".
+  const globalOptions = [
+    "artifactsDir", "config", "configDiscovery", "noConfigDiscovery", "ignoreFiles", "noInput", "sourceDir", "verbose"
+  ];
+
+  const ret = { ...config.run };
+
+  globalOptions.forEach(opt => {
+    if (opt in config) {
+      ret[opt] = config[opt];
+    }
+  });
+
+  return ret;
 };
 
 const getConfig = async () => {
-  const userHomeConfig = getUserHomeConfig() || {};
-  const packageJsonConfig = await getPackageJsonConfig() || {};
-  const cwdConfig = getCwdConfig() || {};
+  const userHomeConfig = flatten(getUserHomeConfig());
+  const packageJsonConfig = flatten(await getPackageJsonConfig());
+  const cwdConfig = flatten(getCwdConfig());
 
   let config = Object.assign(userHomeConfig, packageJsonConfig);
   config = Object.assign(config, cwdConfig);
