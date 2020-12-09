@@ -59,6 +59,8 @@ const getConfig = async () => {
   if (!config.sourceDir) {
     config.sourceDir = process.cwd();
   }
+  config.sourceDir = path.resolve(config.sourceDir);
+
   return config;
 };
 
