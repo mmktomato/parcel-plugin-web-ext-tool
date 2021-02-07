@@ -47,7 +47,7 @@ const getUserHomeConfig = () => {
 
 const flatten = (config) => {
   // Merge global options and "run" options.
-  // See "Global options" sections in https://extensionworkshop.com/documentation/develop/web-ext-command-reference/
+  // See "Global options" section in https://extensionworkshop.com/documentation/develop/web-ext-command-reference/
 
   if (!config || Object.keys(config).length < 1) {
     return {};
