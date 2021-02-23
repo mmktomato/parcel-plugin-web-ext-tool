@@ -21,3 +21,6 @@ You can specify web-ext's settings via config files. The plugin reads config fil
 * web-ext-config.js
 
 See [web-ext's official doc](https://extensionworkshop.com/documentation/develop/getting-started-with-web-ext/#automatic-discovery-of-configuration-files) for details.
+
+# Development
+See `DEVELOPMENT.md`.
