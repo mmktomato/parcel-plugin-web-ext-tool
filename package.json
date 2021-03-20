@@ -24,7 +24,7 @@
   },
   "peerDependencies": {
     "parcel-bundler": ">=1.x",
-    "web-ext": ">=5.x"
+    "web-ext": ">=6.x"
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
