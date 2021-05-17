@@ -77,7 +77,7 @@ const getConfig = async () => {
   let config = Object.assign(userHomeConfig, packageJsonConfig);
   config = Object.assign(config, cwdConfig);
 
-  if (!config.noReload) {
+  if (config.noReload==null) {
     config.noReload = true;
   }
   if (!config.sourceDir) {
