@@ -2,16 +2,27 @@
   "name": "example",
   "version": "1.0.0",
   "description": "An example of parcel-plugin-web-ext-tool.",
-  "main": "index.js",
+  "private": "true",
+  "targets": {
+    "webext-dev": {
+      "sourceMap": {
+        "inline": true,
+        "inlineSources": true
+      }
+    },
+    "webext-prod": {}
+  },
   "scripts": {
-    "start": "parcel watch src/content.js --public-url=/dist"
+    "start": "parcel src/manifest.json --host localhost --target webext-dev",
+    "build": "parcel build src/manifest.json --target webext-prod"
   },
   "keywords": [],
   "author": "mmktomato",
   "license": "MIT",
   "devDependencies": {
-    "parcel-bundler": "^1.12.4",
-    "parcel-plugin-web-ext-tool": "file:..",
+    "@parcel/config-webextension": "^2.0.0-beta.2",
+    "@parcel/reporter-web-ext-tool": "file:..",
+    "parcel": "^2.0.0-beta.2",
     "web-ext": "^6.0.0"
   }
 }

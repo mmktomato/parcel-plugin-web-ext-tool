@@ -1,27 +1,29 @@
 const webExt = require("web-ext");
 const { getConfig } = require("./config");
+const { Reporter } = require("@parcel/plugin");
 
-let runner = null;
+let watching = false;
+let running = false;
 
-module.exports = bundler => {
-  if (!bundler.options.watch) {
-    return;
-  };
+module.exports = new Reporter({
+  async report(opts) {
+    let runner = null;
 
-  bundler.on("bundled", async (bundle) => {
-    if (runner) {
-      runner.reloadAllExtensions();
-      return;
+    if(opts.event.type === "watchStart") {
+      watching = true;
     }
 
-    const config = await getConfig();
+    if(watching && !running && opts.event.type === "buildSuccess") {
+      running = true;
+      const config = await getConfig();
 
-    runner = await webExt.cmd.run(config, {
-      shouldExitProgram: true,
-    });
+      runner = await webExt.cmd.run(config, {
+        shouldExitProgram: true
+      })
 
-    runner.registerCleanup(() => {
-      runner = null;
-    });
-  });
-};
+      runner.registerCleanup(() => {
+        runner = null;
+      })
+    }
+  }
+})
