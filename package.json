@@ -28,6 +28,6 @@
   },
   "devDependencies": {
     "parcel-bundler": "^1.12.4",
-    "web-ext": "^5.0.0"
+    "web-ext": "^7.5.0"
   }
 }
